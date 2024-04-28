@@ -6,7 +6,7 @@
  *
  * ```typescript
  * import { RUNTIME, IS_BUN, IS_DENO, IS_NODE, IS_BROWSER } from "@gnome/runtime-info";
- * 
+ *
  * console.log(RUNTIME);
  * console.log("bun", IS_BUN);
  * console.log("deno", IS_DENO);
@@ -14,7 +14,7 @@
  * console.log("browser", IS_BROWSER);
  * console.log("cloudflare", IS_CLOUDFLARE);
  * ```
- * 
+ *
  * @module
  */
 
@@ -26,10 +26,9 @@ export const IS_NODELIKE = g.process !== undefined;
 export const IS_NODE = !IS_BUN && IS_NODELIKE;
 export const IS_BROWSER = g.window !== undefined;
 
-console.log(g.navigator.userAgent);
-
-export const IS_CLOUDFLARE = g.navigator && g.navigator.userAgent && g.navigator.userAgent.includes("Cloudflare-Workers")
-export type Runtimes = "bun" | "deno" | "node" | "browser" | 'cloudflare' | "unknown";
+export const IS_CLOUDFLARE: boolean = g.navigator && g.navigator.userAgent &&
+    g.navigator.userAgent.includes("Cloudflare-Workers");
+export type Runtimes = "bun" | "deno" | "node" | "browser" | "cloudflare" | "unknown";
 
 let runtimeName: Runtimes = "unknown";
 let version = "";
@@ -52,7 +51,6 @@ if (IS_BUN) {
 } else {
     runtimeName = "unknown";
 }
-
 
 export const VERSION = version;
 export const NODE_VERSION = nodeVersion;

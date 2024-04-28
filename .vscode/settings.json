@@ -1,4 +1,4 @@
 {
     "deno.enable": true,
-    "deno.disablePaths": ["./plat/cf.ts", "./plat/node.ts"]
+    "deno.disablePaths": ["./scenarios/node.ts", "./scenarios/cf.ts"]
 }
