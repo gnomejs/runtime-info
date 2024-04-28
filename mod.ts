@@ -24,10 +24,12 @@ export const IS_BUN = g.Bun !== undefined;
 export const IS_DENO = g.Deno !== undefined;
 export const IS_NODELIKE = g.process !== undefined;
 export const IS_NODE = !IS_BUN && IS_NODELIKE;
-export const IS_BROWSER = g.window !== undefined;
+
 
 export const IS_CLOUDFLARE: boolean = g.navigator && g.navigator.userAgent &&
     g.navigator.userAgent.includes("Cloudflare-Workers");
+
+export const IS_BROWSER = g.window !== undefined && !IS_NODELIKE && !IS_DENO && !IS_CLOUDFLARE;
 export type Runtimes = "bun" | "deno" | "node" | "browser" | "cloudflare" | "unknown";
 
 let runtimeName: Runtimes = "unknown";
